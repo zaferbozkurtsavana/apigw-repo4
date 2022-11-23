@@ -1,0 +1,68 @@
+apiVersion: "xbank/v1beta1"
+kind: "Gateway"
+metadata:
+  name: "repo4"
+  version: "v2"
+  minorVersion: "2.3.4"
+  teamName: "B-Team"
+spec:
+  muhtar: "1.6.6"
+  encumen: "1.2.3"
+  contextPath: "/repo4-test"
+  operations:
+  - name: "operation name"
+    description: "operation description"
+    httpVerb: "POST"
+    route: "/route"
+    target:
+      httpVerb: "GET"
+      host: "asd"
+      timeoutInSeconds: 2500
+      transformationHandledExceptionCodes:
+      - 300
+      - 304
+      route:
+        type: "uri"
+        value: "test"
+    transformation:
+      request:
+        filepath: "/repo4-test/operation name/transformation/request.mjs"
+        timeoutInMilliSeconds: 3000
+      response:
+        filepath: "/repo4-test/operation name/transformation/response.mjs"
+        timeoutInMilliSeconds: 3000
+    validation:
+      request:
+        filepath: "/repo4-test/operation name/validation/request.mjs"
+      response:
+        filepath: "/repo4-test/operation name/validation/response.mjs"
+  - name: "operation2"
+    description: "operation2desc"
+    httpVerb: "POST"
+    route: "/operation-2"
+    target:
+      httpVerb: "PUT"
+      host: "test"
+      timeoutInSeconds: 2500
+      transformationHandledExceptionCodes:
+      - 303
+      - 307
+      - 401
+      route:
+        type: "header"
+        value: "test"
+    transformation:
+      request:
+        filepath: "/repo4-test/operation2/transformation/request.mjs"
+        timeoutInMilliSeconds: 3000
+      response:
+        filepath: "/repo4-test/operation2/transformation/response.mjs"
+        timeoutInMilliSeconds: 3000
+    validation:
+      request:
+        filepath: "/repo4-test/operation2/validation/request.mjs"
+      response:
+        filepath: "/repo4-test/operation2/validation/response.mjs"
+  transformationRepo:
+    url: "https://github.com/zaferbozkurtsavana/apigw-repo4"
+    tag: "v1.0.0"
