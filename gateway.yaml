@@ -1,4 +1,4 @@
-apiVersion: "xbank/v1beta1"
+apiVersion: "xbank/v1beta2"
 kind: "Gateway"
 metadata:
   name: "repo4"
@@ -65,4 +65,4 @@ spec:
         filepath: "/repo4-test/operation2/validation/response.mjs"
   transformationRepo:
     url: "https://github.com/zaferbozkurtsavana/apigw-repo4"
-    tag: "v1.0.0"
+    tag: "v1.0.1"
